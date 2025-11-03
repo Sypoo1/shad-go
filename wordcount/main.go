@@ -32,7 +32,7 @@ func main(){
 
 	lines_map := make(map[string]int)
 
-	for _, filePath := range(args){
+	for _, filePath := range args[1:] {
 		file, err := os.Open(filePath)
 		helper(err)
 		
@@ -44,10 +44,7 @@ func main(){
 			lines_map[line] = lines_map[line] + 1
 		}
 		
-		// err = scanner.Err()
-		// if err != nil{
-		// 	panic(err)
-		// }
+		helper(scanner.Err())
 	}
 
 	for line, count := range lines_map {
